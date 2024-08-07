@@ -1,0 +1,279 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* div, header, main, section { border: 1px solid black; } */
+
+@font-face {
+  font-family: 'HancomSans-Light';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2406-1@1.0/HancomSans-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'PyeongChangPeace-Bold';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/PyeongChangPeace-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'HancomMalangMalang-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2406-1@1.0/HancomMalangMalang-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+* {font-family: 'HancomSans-Light';}
+
+
+body{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+
+
+header{
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0px;
+  z-index: 1; 
+}
+
+.logo {
+  height: 110px;
+  background-color: #FF204E;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo>div:first-child {
+  width: 500px;
+  color: white;
+  text-align: center;
+  line-height: 110px;
+  font-family: 'PyeongChangPeace-Bold';
+  font-weight: bold;
+  font-size: 60px;
+}
+.logo>div>form{
+  width: 400px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+#tb0{
+  height: 50%;
+  text-align: center;
+}
+#tb0 *{
+  font-family: 'PyeongChangPeace-Bold';
+}
+#tb0 td{
+  width: 70px;
+}
+#tb0 input{
+  width: 90px;
+  border: none;
+}
+#tb0 button{
+  border: 2px solid white;
+  border-radius: 5%;
+  width: 80%;
+  height: 80%;
+  font-size: 14px;
+  color: white;
+  background-color: #FF204E;
+}
+
+
+.headmenu{
+  display: flex;
+  flex-grow: 1;
+  background-color: #ff5678;
+}
+.headmenu>div{
+  flex-grow: 1;
+  text-align: center;
+  font-weight: bold;
+  font-size: 24px;
+  color: white;
+}
+
+/* ------------------------------------------------------------------------------- */
+
+main{
+  /* flex-grow: 1; */
+  display: flex;
+  flex-direction: column;
+}
+main > section {
+  height: 450px;
+  display: flex;
+  justify-content: center;
+}
+main > section:first-child{
+  height: 600px;
+  background: linear-gradient(90deg, rgb(97, 97, 97), black 20% 80%, rgb(97, 97, 97));
+ }
+
+
+.contentbox {
+  height: 100%;
+  width: 1000px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #eecec1;
+}
+.boxoffice {
+  height: 350px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.eventbox {
+  height: 400px;
+  width: 300px;
+  border: 2px solid #a88888;
+  border-radius: 5%;
+}
+
+
+.poster {
+  flex-grow: 1;
+  background-color: red;
+  border-radius: 7%;
+}
+
+.boxoffice:first-child > .poster {
+  background-image: url(https://ojsfile.ohmynews.com/STD_IMG_FILE/2024/0613/IE003311810_STD.jpg);
+  background-size: cover;
+}
+.boxoffice:nth-child(2) > .poster {
+  background-image: url(https://www.gninews.co.kr/data/photos/portnews/202312/20231215101829-85042.jpg);
+  background-size: cover;
+}
+.boxoffice:nth-child(3) > .poster {
+  background-image: url(https://ojsfile.ohmynews.com/PHT_IMG_FILE/2014/0425/IE001704427_PHT.jpg);
+  background-size: cover;
+}
+.boxoffice:last-child > .poster {
+  background-image: url(https://i.namu.wiki/i/YzThvIc1h2nIvyGK005RXDoIRVFpGl4NCnIcOP68DHdAD8oGxLm88nGelIPBLkREFyOXFq3yLnZKJpRKwoyOhA.webp);
+  background-size: cover;
+}
+
+
+#tb1 {
+  text-align: center;
+  height: 100%;
+}
+#tb1 th{
+  width: 300px;
+  height: 50px;
+}
+#tb1 td{
+  width: 100px;
+}
+#tb1 > tbody > tr:first-child > td:first-child{
+  background-image: url(https://img.freepik.com/premium-vector/popcorn-cup-isolated-background_764382-5359.jpg?w=826);
+  background-size: 100% 100%;
+  border-radius: 50%;
+  border: 5px solid #eecec1;
+}
+#tb1 > tbody > tr:nth-child(3) > td:first-child{
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ80E_571Yj0vxJRVnPTIFn9LGzxnigEy8vjg&s);
+  background-size: 100% 100%;
+  border-radius: 50%;
+  border: 5px solid #eecec1;
+}
+#tb1 > tbody > tr:nth-child(5) > td:first-child{
+  background-image: url(https://img.freepik.com/premium-vector/colorful-fast-food_24877-3173.jpg?size=626&ext=jpg&ga=GA1.2.1492438833.1719881198&semt=ais_user);
+  background-size: 100% 100%;
+  border-radius: 50%;
+  border: 5px solid #eecec1;
+}
+
+
+#tb2 {
+  text-align: center;
+  height: 100%;
+}
+#tb2 th{
+  width: 300px;
+  height: 50px;
+}
+#tb2 td{
+  width: 100px;
+}
+
+.eventbox:last-child > form{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.eventbox:last-child > form > div{
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-evenly;
+}
+.eventbox:last-child > form > div:first-child{
+  height: 50px;
+  line-height: 50px;
+}
+.eventbox:last-child > form > div:last-child > button{
+  border: 2px solid #a88888;
+  border-radius: 10%;
+  width: 24%;
+  height: 80%;
+  font-size: 16px;
+  background-color: #eecec1;
+}
+
+
+/* -------------------------------------------------------------------------------------- */
+
+footer{
+  height: 300px;
+  background-color: #8a7f7a;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ------------------------------------------------------------------------------------- */
+
+.reservecontainer{
+  width: 100px;
+  height: 100px;
+  border-radius: 30%;
+  background-color: #FF204E;
+  border:4px solid #ff5678;
+  position: fixed;
+  bottom: 70px;
+  right: 100px;
+}
+.reservecontainer>a{
+  display: block; 
+  width: 100%;
+  height: 100%;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  line-height: 90px;
+  font-family: 'HancomMalangMalang-Regular';
+  font-size: 15px;
+}
+
