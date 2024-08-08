@@ -1,3 +1,7 @@
+<%-- prefix : 접두사 (앞에 붙는 단어 / 말) 
+  if. prefix="c"      --> <c:if>
+  if. prefix="core"   --> <core:if>
+--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -48,6 +52,7 @@
 <%-- <% 스크립틀릿 %> --%>
     스크립틀릿이 아닌 HTML 태그 모양으로 작성할 수 있도록 
     태그를 제공하는 라이브러리
+    apache 제공
 
     [라이브러리 추가 방법]
 
@@ -57,7 +62,7 @@
        다운 받은 라이브러리 추가(복사, 붙여넣기)
 
     3. JSTL 을 사용할 JSP 파일 제일 위에
-       taglib 추가 구문 작성
+       taglib 추가 구문 작성 (지시자)
   </pre>
 
   <% 
@@ -69,7 +74,7 @@
   <% } %>
 
   <h3>JSTL c : if 문 사용해보기</h3>
-
+  <%-- JSTL + EL --%>
   <c:if test="${param.age > 20}">
     <h3>성인 입니다</h3>
   </c:if>

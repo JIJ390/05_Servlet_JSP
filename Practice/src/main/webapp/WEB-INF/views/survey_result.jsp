@@ -21,6 +21,7 @@
 <%--   <% int value = request.getParameter("price") +
                  request.getParameter("service") +
                  request.getParameter("movie"); %> --%>
+                 
 
   <c:if test="${param.price + param.service + param.movie >= 10}">
     <h3>만족도 상</h3>
