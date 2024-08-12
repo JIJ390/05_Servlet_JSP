@@ -29,7 +29,7 @@ public class MainServlet extends HttpServlet{
 //		테스트용 샘플 데이터
 //		req.setAttribute("str", "메인 페이지 요청 시 값 전달됨");
 		
-		try {
+		try {			
 //			Service 객체 생성
 			TodoListService service = new TodoListServiceImpl();
 			

@@ -1,0 +1,30 @@
+* {
+  text-align: center;
+}
+
+#memberList{
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+#memberList td, #memberList th{
+  padding: 5px 8px;
+}
+
+thead th{
+  background-color: skyblue;
+}
+
+tbody > tr:nth-of-type(2n){
+  background-color: #dddd;
+}
+
+tbody > tr > td{
+  text-align: end;
+}
+
+div {
+  
+  display: flex;
+  justify-content: space-around;
+}

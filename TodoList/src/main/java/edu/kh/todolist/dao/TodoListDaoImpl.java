@@ -49,6 +49,7 @@ public class TodoListDaoImpl implements TodoListDao{
 				// 객체 생성 시 외부 파일에 작성된 List<Todo> 객체를 입력 받아 todoList에 대입
 				ois = new ObjectInputStream(new FileInputStream(FILE_PATH));
 				todoList = (ArrayList<Todo>)ois.readObject();
+//				ClassNotFoundException : 다운캐스팅 잘못했는지 확인
 			}finally {
 				if(ois != null) ois.close();
 			}
@@ -135,6 +136,8 @@ public class TodoListDaoImpl implements TodoListDao{
 	
 	@Override
 	public boolean todoUpdate(int index, String title, String detail) throws FileNotFoundException, IOException {
+		// TodoList 범위 초과 시 false 반환
+		if(index < 0 || index >= todoList.size()) return false;
 		
 		// 수정된 내용 + 이전 Todo의 완료 여부, 등록일을 담은 Todo 객체 생성 
 		Todo newTodo = new Todo();

@@ -1,0 +1,20 @@
+
+#memberList{
+  border-collapse: collapse;
+}
+
+#memberList td, #memberList th{
+  padding: 5px 8px;
+}
+
+thead th{
+  background-color: skyblue;
+}
+
+tbody > tr:nth-of-type(2n){
+  background-color: #dddd;
+}
+
+tbody > tr > td{
+  text-align: end;
+}
