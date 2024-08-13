@@ -7,41 +7,79 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>이름으로 검색</title>
-  <link rel="stylesheet" href="/resources/css/read.css">
+  <link rel="stylesheet" href="/resources/css/main.css">
 </head>
 <body>
-  <h3>이름으로 검색</h3>
-  <hr>
-  <form action="/member/read" method="POST">
-    <button>검색</button> 
-    <input type="text" name="name">
+  <h2>회원 개별 조회</h2>
+
+
+
+  <form action="/member/read" method="GET" class="form">
+    <input type="text" name="name" placeholder="이름으로 검색" required>
+    <button class="button2">검색</button> 
   </form>
-   
-  <hr>
-   
-  ${searchList}
 
-  <table border=1 id="memberList">
-    <thead>
-      <tr>
-        <th>이름</th>
-        <th>휴대폰 번호</th>
-        <th>누적 금액</th>
-        <th>등급</th>        
-      </tr>
-    </thead>
-
-    <tbody>
-      <c:forEach items="${searchList}" var="search">
+  <div class="container">
+    <table border=1 id="memberList">
+      <thead>
         <tr>
-          <td>${search.name}</td>
-          <td>${search.phone}</td>
-          <td>${search.amount}</td>
-          <td>${search.grade}</td>
+          <th>이름</th>
+          <th>휴대폰 번호</th>
+          <th>누적 금액</th>
+          <th>등급</th> 
+          <th colspan="2">-</th>      
         </tr>
-      </c:forEach>
-    </tbody>
-  </table>
+      </thead>
+
+      <tbody>
+        <c:if test="${not empty requestScope.message}">
+          <tr>
+            <th colspan="5">${message}</th>
+          </tr>
+        </c:if>
+
+        <c:forEach items="${searchList}" var="search" varStatus="vs">
+          <tr>
+            <td class="nameLink"><a href="/member/update?index=${vs.index}&name=${search.name}">${search.name}</a></td>
+            <td>${search.phone}</td>
+            <td>${search.amount}</td>
+            <td>${search.grade}</td>
+            <td><button name="amountBtn" class="button2">금액 누적</button></td>
+            <td><button name="deleteBtn" class="button2">삭제</button></td>
+          </tr>
+        </c:forEach>
+      </tbody>
+    </table>
+  </div>   
+
+
+
+  <br>
+  <a href="/"><button class="button">목록으로</button></a>
+
+
+  <c:if test="${not empty sessionScope.message}" >
+    <script>
+      alert("${message}");
+    </script>
+    <c:remove var="message" scope="session" />
+  </c:if>
+
+  <c:if test="${not empty sessionScope.message2}" >
+    <script>
+      alert("${message2}");
+    </script>
+    <c:remove var="message2" scope="session" />
+  </c:if>
+
+  <script language=JavaScript>
+    var arr = new Array();
+    <c:forEach items="${searchList}" var="search" varStatus="vs">
+      arr.push({name:"${search.name}"});
+     </c:forEach>
+  </script>
+
+  <script src="/resources/js/read.js"></script>
 
 </body>
 </html>

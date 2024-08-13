@@ -10,38 +10,43 @@
   <title>멤버 관리 페이지</title>
 </head>
 <body>
-  <h1>멤버 관리 페이지</h1>
-  <hr>
+  <h1>회원 관리 페이지</h1>
 
   <h4>전체 회원 목록</h4>
-  <hr>
 
-  <table border=1 id="memberList">
-    <thead>
-      <tr>
-        <th>이름</th>
-        <th>휴대폰 번호</th>
-        <th>누적 금액</th>
-        <th>등급</th>        
-      </tr>
-    </thead>
-
-    <tbody>
-      <c:forEach items="${memberList}" var="member">
+  <div class="container">
+    <table border=1 id="memberList">
+      <thead>
         <tr>
-          <td>${member.name}</td>
-          <td>${member.phone}</td>
-          <td>${member.amount}</td>
-          <td>${member.grade}</td>
+          <th>이름</th>
+          <th>휴대폰 번호</th>
+          <th>누적 금액</th>
+          <th>등급</th>        
         </tr>
-      </c:forEach>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <c:if test="${not empty requestScope.message}">
+          <tr>
+            <th colspan="5">${message}</th>
+          </tr>
+        </c:if>
+        <c:forEach items="${memberList}" var="member">
+          <tr>
+            <td>${member.name}</td>
+            <td>${member.phone}</td>
+            <td>${member.amount}</td>
+            <td>${member.grade}</td>
+          </tr>
+        </c:forEach>
+      </tbody>
+    </table>
 
-  <hr>
-  <div>
-    <button id="readBtn">검색</button>
-    <button id="addBtn">회원 추가</button>
+  </div>
+
+  <br>
+  <div class="container">
+    <button id="readBtn" class="button">검색</button>
+    <button id="addBtn" class="button">회원 추가</button>
   </div>  
 
 

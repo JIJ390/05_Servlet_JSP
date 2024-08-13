@@ -16,29 +16,29 @@ import jakarta.servlet.http.HttpServletResponse;
 public class ReadServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String path = "/WEB-INF/views/read.jsp";
-		req.getRequestDispatcher(path).forward(req, resp);
-	}
-	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
 		String name = req.getParameter("name");
-		
+
 		try {
 			MembershipService service = new MembershipServiceImpl();
 			
 			List<Member> searchList = service.selectName(name);
 			
-			req.setAttribute("serchList", searchList);
+			if (searchList.size() == 0) {
+				String message = "조회된 결과가 없습니다";
+				req.setAttribute("message", message);
+			}
+			
+			req.setAttribute("searchList", searchList);
 			
 			String path = "/WEB-INF/views/read.jsp";
 			req.getRequestDispatcher(path).forward(req, resp);
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-
 	}
+	
+
 }

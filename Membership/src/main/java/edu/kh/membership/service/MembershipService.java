@@ -39,7 +39,7 @@ public interface MembershipService {
 	 * @return 결과 문자열
 	 * @throws IOException 
 	 */
-	String updateAmount(Member target, int acc) throws IOException;
+	String[] updateAmount(Member target, int acc) throws IOException;
 
 	/**
 	 * 회원 정보(전화 번호) 수정
@@ -50,5 +50,5 @@ public interface MembershipService {
 	 */
 	String updateMember(Member target, String phone) throws IOException;
 
-	String deleteMember(Member target) throws IOException;
+	boolean deleteMember(Member target) throws IOException;
 }

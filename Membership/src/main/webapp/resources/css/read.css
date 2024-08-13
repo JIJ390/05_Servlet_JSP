@@ -11,6 +11,10 @@ thead th{
   background-color: skyblue;
 }
 
+tbody > tr > th{
+  text-align: center;
+}
+
 tbody > tr:nth-of-type(2n){
   background-color: #dddd;
 }

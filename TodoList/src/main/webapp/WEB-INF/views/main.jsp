@@ -74,7 +74,7 @@
     </script>
     <%-- 한 번 출력 후 세션 종료 --%>
     <c:remove var="message" scope="session" />
-  </c:if>
+  </c:if> 
 
   <script src="/resources/js/main.js"></script>
 </body>

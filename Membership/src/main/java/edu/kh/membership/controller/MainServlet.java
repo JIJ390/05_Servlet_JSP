@@ -21,6 +21,11 @@ public class MainServlet extends HttpServlet{
 			MembershipService service = new MembershipServiceImpl();
 			List<Member> memberList = service.getMemberList();
 			
+			if (memberList.size() == 0) {
+				String message = "조회된 결과가 없습니다";
+				req.setAttribute("message", message);
+			}
+			
 			req.setAttribute("memberList", memberList);
 			
 			String path = "/WEB-INF/views/main.jsp";

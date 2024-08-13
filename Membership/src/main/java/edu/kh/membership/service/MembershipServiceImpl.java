@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import edu.kh.membership.dao.MembershipDao;
 import edu.kh.membership.dao.MembershipDaoImpl;
@@ -79,11 +80,12 @@ public class MembershipServiceImpl implements MembershipService{
 			}
 		}
 		
+		
 		return searchList;
 	}
 
 	@Override
-	public String updateAmount(Member target, int acc) throws IOException {
+	public String[] updateAmount(Member target, int acc) throws IOException {
 		int before = target.getAmount();
 		
 		target.setAmount(acc + before);
@@ -100,21 +102,25 @@ public class MembershipServiceImpl implements MembershipService{
 		
 		
 		StringBuilder sb = new StringBuilder();
+		String[] message = new String[2];
+		
 		sb.append(target.getName());
-		sb.append(" 회원님의 누적 금액\n");
+		sb.append(" 회원님의 누적 금액 : ");
 		sb.append(before + " -> " + currentAmount);
 		
-		if (target.getGrade() != grade) {
-			
-			String str = String.format("\n* %s * 등급으로 변경되었습니다", grade);
-			sb.append(str);
-			
+		message[0] = sb.toString();
+		
+		String str = null;
+		
+		if (!target.getGrade().equals(grade)) {
+			str = String.format("* %s * 등급으로 변경되었습니다", grade);
 			target.setGrade(grade);
+			message[1] = str;
 		}
 		
 		dao.saveFile();
 		
-		return sb.toString();
+		return message;
 	}
 	
 	@Override
@@ -124,7 +130,7 @@ public class MembershipServiceImpl implements MembershipService{
 		
 		for (Member member : memberList) {
 			if (member.getPhone().equals(phone)) {
-				return "\n### 중복되는 휴대폰 번호가 존재합니다 ###";
+				return "### 실패 : 중복되는 휴대폰 번호가 존재합니다 ###";
 			}
 		}
 		
@@ -135,8 +141,8 @@ public class MembershipServiceImpl implements MembershipService{
 		StringBuilder sb = new StringBuilder();
 		
 		sb.append(target.getName());
-		sb.append(" 회원님의 전화 번호가 변경되었습니다\n");
-		sb.append(before + " -> " + phone);
+		sb.append(" 회원님의 전화 번호가 변경되었습니다");
+//		sb.append(before + " -> " + phone);
 		
 		dao.saveFile();
 		
@@ -144,7 +150,7 @@ public class MembershipServiceImpl implements MembershipService{
 	}
 	
 	@Override
-	public String deleteMember(Member target) throws IOException {
+	public boolean deleteMember(Member target) throws IOException {
 		
 		List<Member> memberList = dao.getMemberList();
 		
@@ -156,6 +162,6 @@ public class MembershipServiceImpl implements MembershipService{
 		dao.saveFile();
 		
 //		memberList 에서 지워진 것 target 자체는 사라지지 않음
-		return target.getName() + " 회원이 탈퇴 처리 되었습니다";
+		return result;
 	}
 }
