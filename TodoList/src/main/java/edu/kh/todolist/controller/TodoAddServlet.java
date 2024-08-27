@@ -30,7 +30,7 @@ public class TodoAddServlet extends HttpServlet{
 //			4. 성공/ 실패 메시지 세팅
 			String message = null;
 			if(index > -1) message = "추가 성공!";
-			else	           message = "추가 실패!"; 	
+			else	       message = "추가 실패!"; 	
 			
 //			5. 기존 req 를 사용할 수 없기 때문에
 //			session을 이용해서 message 를 세팅
